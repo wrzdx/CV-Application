@@ -49,6 +49,7 @@ export default function PersonalInfo() {
             placeholder: 'Enter your email address',
             required: true,
             maxLength: 32,
+            autoComplete: 'on',
           },
           colorPicker: true,
         }}

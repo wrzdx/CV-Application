@@ -14,6 +14,7 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
   background: transparent;
+  width: 100%;
 }
 
 .color-picker-trigger:focus,
@@ -34,8 +35,6 @@
 .color-picker-icon {
   height: 1em;
 }
-
-
 
 .current-color-swatch {
   width: 1rem;
@@ -66,17 +65,21 @@
   padding: 12px;
   border-radius: 12px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .colors-grid {
+  grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(4, var(--color-swatch-size));
   grid-auto-rows: var(--color-swatch-size);
   justify-content: center;
   gap: 0.25rem;
-  margin-bottom: 12px;
-
-  --color-swatch-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  --color-swatch-size: 1.75rem;
 }
 
 .color-swatch-btn {
@@ -88,4 +91,30 @@
 
 .color-swatch-btn:hover {
   transform: scale(1.1);
+}
+
+.palette-container {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1); 
+}
+
+#palette {
+  padding: 0;
+  border: none;
+  background: transparent;
+  
+  width: 150%;
+  height: 150%;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  cursor: pointer;
 }

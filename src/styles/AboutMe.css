@@ -1,0 +1,20 @@
+.about-me-text-container {
+  margin-top: 1rem;
+}
+.about-me-text-container p {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.about-me-text-container textarea {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background-color: transparent;
+  resize: vertical;
+}
+
+.about-me-text-container textarea:focus {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}

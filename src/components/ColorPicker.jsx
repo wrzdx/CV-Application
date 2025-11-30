@@ -34,9 +34,19 @@ function Palette({ setColor, color }) {
         placeholder="#000000"
         onChange={(e) => setColor(e.target.value)}
         value={color || '#'}
-        style={{ width: '100%', padding: '4px', boxSizing: 'border-box' }}
         autoFocus
+        maxLength="7"
+        id="hex-input"
       />
+      <div className="palette-container">
+        <input
+          type="color"
+          name="palette"
+          id="palette"
+          onChange={(e) => setColor(e.target.value)}
+          value={color || '#fff'}
+        />
+      </div>
     </div>
   )
 }
