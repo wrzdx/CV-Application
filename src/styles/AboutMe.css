@@ -12,6 +12,12 @@
   border-radius: 0.25rem;
   background-color: transparent;
   resize: vertical;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.about-me-text-container textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .about-me-text-container textarea:focus {

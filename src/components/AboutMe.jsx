@@ -1,8 +1,10 @@
 import ColorPicker from './ColorPicker'
 import './../styles/AboutMe.css'
+import userSvg from './../assets/user.svg'
+import FormSection from './FormSection.jsx'
 
-export default function AboutMe() {
-  return (
+export default function AboutMe({ handleToggleSection, isExpanded }) {
+  const content = (
     <div className="about-me">
       <ColorPicker miniMode={false} />
       <div className="about-me-text-container">
@@ -16,5 +18,15 @@ export default function AboutMe() {
         ></textarea>
       </div>
     </div>
+  )
+  return (
+    <FormSection
+      name="About Me"
+      svgUrl={userSvg}
+      isExpanded={isExpanded}
+      onToggle={handleToggleSection}
+    >
+      {content}
+    </FormSection>
   )
 }

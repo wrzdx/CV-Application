@@ -1,5 +1,7 @@
 import './../styles/PersonalInfo.css'
 import ColorPicker from './ColorPicker'
+import userSvg from './../assets/user.svg'
+import FormSection from './FormSection.jsx'
 
 function InputGroup({ id, name, inputProps, colorPicker = false }) {
   return (
@@ -12,8 +14,8 @@ function InputGroup({ id, name, inputProps, colorPicker = false }) {
   )
 }
 
-export default function PersonalInfo() {
-  return (
+export default function PersonalInfo({ handleToggleSection, isExpanded }) {
+  const content = (
     <div className="personal-info">
       <InputGroup
         {...{
@@ -109,5 +111,15 @@ export default function PersonalInfo() {
         }}
       />
     </div>
+  )
+  return (
+    <FormSection
+      name="Personal Information"
+      svgUrl={userSvg}
+      isExpanded={isExpanded}
+      onToggle={handleToggleSection}
+    >
+      {content}
+    </FormSection>
   )
 }

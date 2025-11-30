@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import './../styles/App.css'
-import userSvg from './../assets/user.svg'
+
 import Buttons from './Buttons.jsx'
 import PersonalInfo from './PersonalInfo.jsx'
 import AboutMe from './AboutMe.jsx'
-import FormSection from './FormSection.jsx'
 
 function Form() {
   const [expandedSectionId, setExpandedSectionId] = useState(null)
@@ -13,30 +12,15 @@ function Form() {
     setExpandedSectionId((prevId) => (prevId === sectionId ? null : sectionId))
   }
 
-  const formSections = [
-    {
-      name: 'Personal Information',
-      content: <PersonalInfo />,
-      svgUrl: userSvg,
-    },
-    {
-      name: 'Work Experience',
-      content: <AboutMe />,
-      svgUrl: userSvg,
-    },
-  ]
+  const formSections = [PersonalInfo, AboutMe]
   return (
     <form className="form">
-      {formSections.map((section, id) => (
-        <FormSection
+      {formSections.map((Section, id) => (
+        <Section
           key={id}
-          name={section.name}
-          svgUrl={section.svgUrl}
           isExpanded={id === expandedSectionId}
-          onToggle={() => handleToggleSection(id)}
-        >
-          {section.content}
-        </FormSection>
+          handleToggleSection={() => handleToggleSection(id)}
+        />
       ))}
     </form>
   )
