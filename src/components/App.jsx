@@ -4,6 +4,7 @@ import './../styles/App.css'
 import Buttons from './Buttons.jsx'
 import PersonalInfo from './PersonalInfo.jsx'
 import AboutMe from './AboutMe.jsx'
+import Skills from './Skills.jsx'
 
 function Form() {
   const [expandedSectionId, setExpandedSectionId] = useState(null)
@@ -12,7 +13,7 @@ function Form() {
     setExpandedSectionId((prevId) => (prevId === sectionId ? null : sectionId))
   }
 
-  const formSections = [PersonalInfo, AboutMe]
+  const formSections = [PersonalInfo, AboutMe, Skills]
   return (
     <form className="form">
       {formSections.map((Section, id) => (
