@@ -1,11 +1,14 @@
 import './../styles/PersonalInfo.css'
+import ColorPicker from './ColorPicker'
 
-function InputGroup({ id, name, inputProps }) {
+function InputGroup({ id, name, inputProps, colorPicker = false }) {
   return (
-    <p className="input-group">
-      <label htmlFor={id}>{name}</label>
+    <div className={'input-group'}>
+      <p>{name}</p>
+      {colorPicker && <ColorPicker miniMode={true} />}
+      <label htmlFor={id}></label>
       <input id={id} {...inputProps} />
-    </p>
+    </div>
   )
 }
 
@@ -47,6 +50,7 @@ export default function PersonalInfo() {
             required: true,
             maxLength: 32,
           },
+          colorPicker: true,
         }}
       />
       <InputGroup
@@ -60,6 +64,7 @@ export default function PersonalInfo() {
             required: true,
             maxLength: 15,
           },
+          colorPicker: true,
         }}
       />
       <InputGroup
@@ -73,6 +78,7 @@ export default function PersonalInfo() {
             required: true,
             maxLength: 64,
           },
+          colorPicker: true,
         }}
       />
       <InputGroup
@@ -85,6 +91,7 @@ export default function PersonalInfo() {
             placeholder: 'Enter your LinkedIn profile URL',
             maxLength: 64,
           },
+          colorPicker: true,
         }}
       />
       <InputGroup
@@ -97,6 +104,7 @@ export default function PersonalInfo() {
             placeholder: 'Enter your website URL',
             maxLength: 64,
           },
+          colorPicker: true,
         }}
       />
     </div>

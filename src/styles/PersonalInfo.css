@@ -1,15 +1,20 @@
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  row-gap: 0.25rem;
+}
 
 .input-group:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-.input-group label {
-  display: block;
-  margin-bottom: 0.5rem;
+.input-group p {
   font-weight: 500;
 }
 
 .input-group input {
+  grid-column: span 2;
   padding: 0.4rem 0.6rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
