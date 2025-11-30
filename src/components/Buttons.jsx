@@ -1,4 +1,4 @@
-import "./../styles/buttons.css";
+import './../styles/buttons.css'
 
 export default function Buttons() {
   return (
@@ -13,5 +13,5 @@ export default function Buttons() {
         Save as PDF
       </button>
     </div>
-  );
+  )
 }

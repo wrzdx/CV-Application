@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import './../styles/App.css'
 import userSvg from './../assets/user.svg'
 import downSvg from './../assets/angle-down.svg'
 import Buttons from './Buttons.jsx'
-import { useState } from 'react'
+import PersonalInfo from './PersonalInfo.jsx'
+import AboutMe from './AboutMe.jsx'
 
 function FormSection({
   name = 'Section Name',
@@ -12,48 +14,25 @@ function FormSection({
   onToggle,
 }) {
   return (
-    <fieldset className="formSection">
+    <fieldset
+      className={'formSection' + (isExpanded ? ' expanded' : '')}
+      aria-expanded={isExpanded}
+    >
       <legend className="sr-only">{name}</legend>
 
       <header className="formSectionHeader" onClick={onToggle}>
-        <div className="title-wrapper">
-          <img src={svgUrl} alt="" aria-hidden="true" />
-          <span className="visual-title">{name}</span>
-        </div>
-
-        <button
-          type="button"
-          className={'expandCollapse' + (isExpanded ? ' expanded' : '')}
-          aria-expanded={isExpanded}
-          onClick={(e) => {
-            e.stopPropagation()
-            onToggle()
-          }}
-        >
-          <img
-            src={downSvg}
-            alt={isExpanded ? 'Collapse section' : 'Expand section'}
-          />
-        </button>
+        <img className="sectionIcon" src={svgUrl} alt="" aria-hidden="true" />
+        <span className="visual-title">{name}</span>
+        <img className="arrow" src={downSvg} alt="" aria-hidden="true" />
       </header>
 
-      {isExpanded && <div className="sectionContent">{children}</div>}
+      {isExpanded && (
+        <>
+          <div className="sectionContent">{children}</div>
+          <button className="submit">Submit</button>
+        </>
+      )}
     </fieldset>
-  )
-}
-
-function PersonalInfo() {
-  return (
-    <div className="personal-info">
-      <p className="input-group">
-        <label htmlFor="fullName">Full Name</label>
-        <input type="text" name="fullName" id="fullName" />
-      </p>
-      <p className="input-group">
-        <label htmlFor="fullName">Full Name</label>
-        <input type="text" name="fullName" id="fullName" />
-      </p>
-    </div>
   )
 }
 
@@ -72,7 +51,7 @@ function Form() {
     },
     {
       name: 'Work Experience',
-      content: <PersonalInfo />,
+      content: <AboutMe />,
       svgUrl: userSvg,
     },
   ]
@@ -80,6 +59,7 @@ function Form() {
     <form className="form">
       {formSections.map((section, id) => (
         <FormSection
+          key={id}
           name={section.name}
           svgUrl={section.svgUrl}
           isExpanded={id === expandedSectionId}

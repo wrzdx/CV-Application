@@ -1,0 +1,91 @@
+.picker-container {
+  position: relative;
+  display: inline-block;
+}
+
+.picker-container p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.color-picker-trigger,
+.hex-input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background: transparent;
+}
+
+.color-picker-trigger:focus,
+.hex-input:focus {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.color-picker-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.color-picker-icon {
+  height: 1em;
+}
+
+
+
+.current-color-swatch {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 20%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100; 
+  background: transparent; 
+  cursor: default;
+}
+
+.palette-popover {
+  position: absolute;
+  top: calc(100% + 8px); 
+  left: 0;
+  z-index: 101;
+  
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.colors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--color-swatch-size));
+  grid-auto-rows: var(--color-swatch-size);
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 12px;
+
+  --color-swatch-size: 1.5rem;
+}
+
+.color-swatch-btn {
+  border-radius: 20%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.1);
+}
