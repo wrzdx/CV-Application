@@ -2,6 +2,9 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+
+import prettierPlugin from 'eslint-plugin-prettier/recommended'
+
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -12,6 +15,7 @@ export default defineConfig([
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
+      prettierPlugin,
     ],
     languageOptions: {
       ecmaVersion: 2020,
@@ -24,6 +28,14 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'prettier/prettier': [
+        'error',
+        {
+          trailingComma: 'all', // Запятая всегда вызывает перенос
+          singleQuote: true,
+          semi: false,
+        },
+      ],
     },
   },
 ])

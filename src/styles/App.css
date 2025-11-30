@@ -16,28 +16,37 @@
   gap: 1rem;
 }
 
-.section {
+.formSection {
   background-color: var(--white);
   box-shadow: var(--shadow);
   border-radius: 0.5rem;
   padding: 1.5rem 1rem;
+  border: none;
 }
 
-.section header {
+.formSectionHeader {
   display: flex;
   gap: 0.5rem;
-  height: 1em;
+  height: 1.2rem; 
   font-size: 1.2rem;
   line-height: 1;
-  font-weight: 600;  
+  font-weight: 600;
+  justify-content: space-between; 
 }
 
-.section header button {
-  margin-inline: auto 0.5rem;
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formSectionHeader button {
+  margin-right: 0.5rem;
   aspect-ratio: 1;
   border: none;
   background: none;
   padding: 0;
+  padding: 0.1rem;
 }
 
 
