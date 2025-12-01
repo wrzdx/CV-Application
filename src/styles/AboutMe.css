@@ -1,9 +1,10 @@
 .about-me-text-container {
   margin-top: 1rem;
 }
-.about-me-text-container p {
+.about-me-text-container label {
   font-weight: 500;
   margin-bottom: 0.25rem;
+  display: block;
 }
 
 .about-me-text-container textarea {

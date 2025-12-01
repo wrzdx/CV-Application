@@ -6,9 +6,8 @@ import FormSection from './FormSection.jsx'
 function InputGroup({ id, name, inputProps, colorPicker = false }) {
   return (
     <div className={'input-group'}>
-      <p>{name}</p>
+      <label htmlFor={id}>{name}</label>
       {colorPicker && <ColorPicker miniMode={true} />}
-      <label htmlFor={id}></label>
       <input id={id} {...inputProps} />
     </div>
   )

@@ -65,6 +65,8 @@ export default function Skills({ handleToggleSection, isExpanded }) {
     { id: crypto.randomUUID(), name: '', level: 'Novice' },
   ])
 
+  const MAX_SKILLS = 10
+
   const addSkill = ([name, level]) => {
     const newSkill = { id: crypto.randomUUID(), name, level }
     setSkills((prevSkills) => [...prevSkills, newSkill])
@@ -97,7 +99,9 @@ export default function Skills({ handleToggleSection, isExpanded }) {
           ))}
           <div
             key="new-skill"
-            className="add-skill"
+            className={
+              'add-skill' + (skills.length >= MAX_SKILLS ? ' disabled' : '')
+            }
             onClick={() => addSkill(['', ''])}
           >
             New skill

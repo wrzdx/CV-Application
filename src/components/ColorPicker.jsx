@@ -57,7 +57,7 @@ export default function ColorPicker({ miniMode }) {
 
   return (
     <div className="picker-container">
-      {!miniMode && <p>Pick a tab color</p>}
+      {!miniMode && <p onClick={() => setIsOpen(!isOpen)}>Pick a tab color</p>}
       <div className="color-picker-trigger" onClick={() => setIsOpen(!isOpen)}>
         {color ? (
           <span
