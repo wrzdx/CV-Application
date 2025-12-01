@@ -8,7 +8,7 @@ export default function FormSection({
   onToggle,
 }) {
   return (
-    <fieldset
+    <form
       className={'formSection' + (isExpanded ? ' expanded' : '')}
       aria-expanded={isExpanded}
     >
@@ -26,6 +26,6 @@ export default function FormSection({
           <button className="submit">Submit</button>
         </>
       )}
-    </fieldset>
+    </form>
   )
 }

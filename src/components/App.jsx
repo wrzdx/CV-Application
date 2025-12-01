@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo.jsx'
 import AboutMe from './AboutMe.jsx'
 import Skills from './Skills.jsx'
 
-function Form() {
+function Forms() {
   const [expandedSectionId, setExpandedSectionId] = useState(null)
 
   function handleToggleSection(sectionId) {
@@ -15,7 +15,7 @@ function Form() {
 
   const formSections = [PersonalInfo, AboutMe, Skills]
   return (
-    <form className="form">
+    <div className="form-list">
       {formSections.map((Section, id) => (
         <Section
           key={id}
@@ -23,7 +23,7 @@ function Form() {
           handleToggleSection={() => handleToggleSection(id)}
         />
       ))}
-    </form>
+    </div>
   )
 }
 
@@ -35,7 +35,7 @@ function Menu() {
   return (
     <div className="menu">
       <Buttons />
-      <Form />
+      <Forms />
     </div>
   )
 }
