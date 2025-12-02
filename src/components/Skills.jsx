@@ -99,9 +99,7 @@ export default function Skills({ handleToggleSection, isExpanded }) {
           ))}
           <div
             key="new-skill"
-            className={
-              'add-skill' + (skills.length >= MAX_SKILLS ? ' disabled' : '')
-            }
+            className="add-skill"
             onClick={() => addSkill(['', ''])}
           >
             New skill
