@@ -15,7 +15,7 @@ import {
   subMonths,
 } from 'date-fns'
 
-function Calendar({ setDate, date }) {
+function Calendar({ setDate, date, lowerBound, upperBound }) {
   const today = new Date()
   const [dateToShow, setDateToShow] = useState(date)
 
@@ -84,10 +84,20 @@ function Calendar({ setDate, date }) {
                 (isSameDay(day, today) ? ' today' : '') +
                 (isSameDay(day, date) ? ' selected' : '') +
                 (day < firstDay || day > lastDay ? ' fromAnotherMonth' : '') +
-                (day > today ? ' fromFuture' : '')
+                (day > today ? ' fromFuture' : '') +
+                ((lowerBound && day < lowerBound) ||
+                (upperBound && day > upperBound)
+                  ? ' unavailable'
+                  : '')
               }
               onClick={() => {
                 if (day > today) return
+                if (
+                  (lowerBound && day < lowerBound) ||
+                  (upperBound && day > upperBound)
+                )
+                  return
+
                 setDate(day)
                 setDateToShow(day)
               }}
@@ -101,8 +111,14 @@ function Calendar({ setDate, date }) {
   )
 }
 
-export default function DatePicker({ name, children }) {
-  const [date, setDate] = useState(new Date())
+export default function DatePicker({
+  name,
+  children,
+  lowerBound = null,
+  upperBound = null,
+  date,
+  setDate,
+}) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -122,7 +138,7 @@ export default function DatePicker({ name, children }) {
         <>
           <div className="backdrop" onClick={() => setIsOpen(false)} />
 
-          <Calendar {...{ setDate, date }} />
+          <Calendar {...{ setDate, date, lowerBound, upperBound }} />
         </>
       )}
     </div>

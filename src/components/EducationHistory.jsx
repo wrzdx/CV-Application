@@ -10,6 +10,8 @@ function Education({ id, handleDeleteEducation }) {
   const [achievements, setAchievements] = useState([
     { id: crypto.randomUUID() },
   ])
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   return (
     <fieldset className="education-item">
       <button
@@ -51,8 +53,22 @@ function Education({ id, handleDeleteEducation }) {
           />
         </p>
         <div className="dates">
-          <DatePicker name={'startDate' + id}>Start Date</DatePicker>
-          <DatePicker name={'endDate' + id}>End Date</DatePicker>
+          <DatePicker
+            name={'startDate' + id}
+            setDate={setStartDate}
+            date={startDate}
+            upperBound={endDate}
+          >
+            Start Date
+          </DatePicker>
+          <DatePicker
+            name={'endDate' + id}
+            setDate={setEndDate}
+            date={endDate}
+            lowerBound={startDate}
+          >
+            End Date
+          </DatePicker>
         </div>
         <fieldset className="achievements">
           <label

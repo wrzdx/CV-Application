@@ -111,12 +111,14 @@
 }
 
 .calendar-day.fromFuture,
-.calendar-day.fromAnotherMonth {
+.calendar-day.fromAnotherMonth,
+.unavailable {
   color: rgba(0, 0, 0, 0.4);
 }
 
 .calendar-day.fromFuture,
-.week-days .week-day {
+.week-days .week-day,
+.unavailable {
   cursor: default;
 }
 

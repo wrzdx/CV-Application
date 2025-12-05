@@ -8,6 +8,9 @@ import DatePicker from './DatePicker.jsx'
 
 function Work({ id, handleDeleteWork }) {
   const [jobDescs, setJobDescs] = useState([{ id: crypto.randomUUID() }])
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+
   return (
     <fieldset className="work-item">
       <button
@@ -84,8 +87,22 @@ function Work({ id, handleDeleteWork }) {
           </div>
         </fieldset>
         <div className="dates">
-          <DatePicker name={'startDate' + id}>Start Date</DatePicker>
-          <DatePicker name={'endDate' + id}>End Date</DatePicker>
+          <DatePicker
+            name={'startDate' + id}
+            setDate={setStartDate}
+            date={startDate}
+            upperBound={endDate}
+          >
+            Start Date
+          </DatePicker>
+          <DatePicker
+            name={'endDate' + id}
+            setDate={setEndDate}
+            date={endDate}
+            lowerBound={startDate}
+          >
+            End Date
+          </DatePicker>
         </div>
       </div>
     </fieldset>

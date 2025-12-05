@@ -20,3 +20,8 @@
   margin-top: 0.25rem;
   color: rgba(0, 0, 0, 0.5);
 }
+
+.custom-info input:focus {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
