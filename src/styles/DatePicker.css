@@ -17,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  gap: 1rem;
 }
 
 .date-picker-trigger:focus {
@@ -51,7 +52,7 @@
   padding: 0.8rem;
   border-radius: 0.8rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 15rem;
 }
 
 .month-year-container {

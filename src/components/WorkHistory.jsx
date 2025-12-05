@@ -85,7 +85,7 @@ function Work({ id, handleDeleteWork }) {
         </fieldset>
         <div className="dates">
           <DatePicker name={'startDate' + id}>Start Date</DatePicker>
-          {/* <DatePicker name={'endDate' + id}>End Date</DatePicker> */}
+          <DatePicker name={'endDate' + id}>End Date</DatePicker>
         </div>
       </div>
     </fieldset>

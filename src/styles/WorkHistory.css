@@ -91,3 +91,8 @@
 .job-desc-container {
   margin-bottom: 0.5rem;
 }
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}
