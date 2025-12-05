@@ -7,7 +7,9 @@ function InputGroup({ id, name, inputProps, colorPicker = false }) {
   return (
     <div className={'input-group'}>
       <label htmlFor={id}>{name}</label>
-      {colorPicker && <ColorPicker miniMode={true} />}
+      {colorPicker && (
+        <ColorPicker miniMode={true} name={inputProps.name + 'Color'} />
+      )}
       <input id={id} {...inputProps} />
     </div>
   )
@@ -65,6 +67,7 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             placeholder: 'Enter your phone number',
             required: true,
             maxLength: 15,
+            autoComplete: 'on',
           },
           colorPicker: true,
         }}
@@ -79,6 +82,7 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             placeholder: 'Enter your address',
             required: true,
             maxLength: 64,
+            autoComplete: 'on',
           },
           colorPicker: true,
         }}

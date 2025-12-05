@@ -85,7 +85,7 @@ export default function Skills({ handleToggleSection, isExpanded }) {
   }
   const content = (
     <div className="skills-container">
-      <ColorPicker miniMode={false} />
+      <ColorPicker miniMode={false} name="skillsColor" />
       <div className="skills">
         <p>Skills</p>
         <div className="skill-list">

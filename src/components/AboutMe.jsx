@@ -6,7 +6,7 @@ import FormSection from './FormSection.jsx'
 export default function AboutMe({ handleToggleSection, isExpanded }) {
   const content = (
     <div className="about-me">
-      <ColorPicker miniMode={false} />
+      <ColorPicker miniMode={false} name="aboutMeColor" />
       <div className="about-me-text-container">
         <label htmlFor="aboutMe">Description</label>
         <textarea

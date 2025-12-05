@@ -1,0 +1,122 @@
+.date-picker-container {
+  position: relative;
+  display: block;
+}
+
+.date-picker-container > p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.date-picker-trigger {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.date-picker-trigger:focus {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.date-picker-icon {
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: transparent;
+  cursor: default;
+}
+
+.calendar-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 101;
+
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.month-year-container {
+  display: flex;
+  align-items: center;
+}
+
+.month-year {
+  margin-inline: auto;
+  font-weight: 500;
+}
+
+.month-year-container > button {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  height: 1.8rem;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+}
+
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.week-days,
+.calendar-days {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 7;
+}
+
+.week-days {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
+
+.calendar-container p {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.calendar-day.today {
+  border: 2px solid var(--orange);
+}
+
+.calendar-day.selected {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.calendar-day.fromFuture,
+.calendar-day.fromAnotherMonth {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.calendar-day.fromFuture,
+.week-days .week-day {
+  cursor: default;
+}
+
+

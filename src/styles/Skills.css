@@ -8,7 +8,7 @@
   margin-bottom: 0.25rem;
 }
 
-.skill-item:not(:last-child) {
+.skill-item {
   margin-bottom: 0.5rem;
 }
 
@@ -42,7 +42,7 @@
   cursor: pointer;
   padding: 0;
   height: 1.3rem;
-  color: var(--orange);
+  flex: none;
 }
 
 .add-skill {

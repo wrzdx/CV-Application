@@ -51,13 +51,16 @@ function Palette({ setColor, color }) {
   )
 }
 
-export default function ColorPicker({ miniMode }) {
-  const [color, setColor] = useState(null)
+export default function ColorPicker({ miniMode, name, defaultValue = '' }) {
+  const [color, setColor] = useState(defaultValue)
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="picker-container">
+    <div className="color-picker-container">
+      <input type="hidden" name={name} value={color || ''} />
+
       {!miniMode && <p onClick={() => setIsOpen(!isOpen)}>Pick a tab color</p>}
+
       <div className="color-picker-trigger" onClick={() => setIsOpen(!isOpen)}>
         {color ? (
           <span
@@ -78,7 +81,6 @@ export default function ColorPicker({ miniMode }) {
       {isOpen && (
         <>
           <div className="backdrop" onClick={() => setIsOpen(false)} />
-
           <Palette setColor={setColor} color={color} />
         </>
       )}

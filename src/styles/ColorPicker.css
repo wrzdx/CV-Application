@@ -1,9 +1,9 @@
-.picker-container {
+.color-picker-container {
   position: relative;
   display: inline-block;
 }
 
-.picker-container p {
+.color-picker-container p {
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -62,8 +62,8 @@
   
   background: white;
   border: 1px solid #e5e7eb;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: auto auto;
