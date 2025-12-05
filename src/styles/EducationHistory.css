@@ -1,0 +1,95 @@
+.education-list {
+  margin-top: 1rem;
+}
+
+.education-list .content > :not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.education-list .content label,
+.education-list > p {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.education-item {
+  position: relative;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.2rem;
+}
+
+.education-item:hover .delete-education-item {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.delete-education-item {
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity;
+  position: absolute; 
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  background-color: var(--white);
+  width: 1.25rem;
+  aspect-ratio: 1;
+  top: 0;
+  right: 0;
+  padding: 0.2rem;
+  transform: translate(50%, -50%);
+  transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) .25s;
+  cursor: pointer;
+}
+
+.education-item input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  width: 100%;
+  background-color: transparent;
+}
+
+.education-item input:focus {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.achievements {
+  border: none;
+  padding: 0;
+}
+
+.achievement-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.delete-achievement {
+  flex: none;
+  align-self: center;
+  background: transparent;
+  border: none;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 0;
+  height: 1.3rem;
+}
+
+.add-education,
+.add-achievement {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}

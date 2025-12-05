@@ -18,6 +18,7 @@
   justify-content: space-between;
   cursor: pointer;
   gap: 1rem;
+  align-items: center;
 }
 
 .date-picker-trigger:focus {
@@ -26,8 +27,7 @@
 }
 
 .date-picker-icon {
-  height: 1.2em;
-  vertical-align: middle;
+  height: 1em;
 }
 
 .backdrop {

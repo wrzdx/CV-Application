@@ -6,6 +6,7 @@ import PersonalInfo from './PersonalInfo.jsx'
 import AboutMe from './AboutMe.jsx'
 import Skills from './Skills.jsx'
 import WorkHistory from './WorkHistory.jsx'
+import EducationHistory from './EducationHistory.jsx'
 
 function Forms() {
   const [expandedSectionId, setExpandedSectionId] = useState(null)
@@ -14,7 +15,13 @@ function Forms() {
     setExpandedSectionId((prevId) => (prevId === sectionId ? null : sectionId))
   }
 
-  const formSections = [PersonalInfo, AboutMe, Skills, WorkHistory]
+  const formSections = [
+    PersonalInfo,
+    AboutMe,
+    Skills,
+    WorkHistory,
+    EducationHistory,
+  ]
   return (
     <div className="form-list">
       {formSections.map((Section, id) => (
