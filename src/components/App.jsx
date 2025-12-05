@@ -7,6 +7,7 @@ import AboutMe from './AboutMe.jsx'
 import Skills from './Skills.jsx'
 import WorkHistory from './WorkHistory.jsx'
 import EducationHistory from './EducationHistory.jsx'
+import CustomInformation from './CustomInformation.jsx'
 
 function Forms() {
   const [expandedSectionId, setExpandedSectionId] = useState(null)
@@ -21,6 +22,7 @@ function Forms() {
     Skills,
     WorkHistory,
     EducationHistory,
+    CustomInformation,
   ]
   return (
     <div className="form-list">

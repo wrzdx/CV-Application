@@ -33,7 +33,8 @@
 }
 
 .color-picker-icon {
-  height: 1em;
+  height: 1.5em;
+  padding: 0.25rem;
 }
 
 .current-color-swatch {

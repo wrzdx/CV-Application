@@ -1,8 +1,8 @@
 .input-group {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: end;
-  row-gap: 0.25rem;
+  align-items: center;
+  row-gap: 0.5rem;
 }
 
 .input-group:not(:last-child) {
