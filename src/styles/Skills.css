@@ -3,9 +3,10 @@
   width: 100%;
 }
 
-.skills > p {
+.skills > label {
   font-weight: 500;
   margin-bottom: 0.25rem;
+  display: block;
 }
 
 .skill-item {

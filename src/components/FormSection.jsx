@@ -20,12 +20,7 @@ export default function FormSection({
         <img className="arrow" src={downSvg} alt="" aria-hidden="true" />
       </header>
 
-      {isExpanded && (
-        <>
-          <div className="sectionContent">{children}</div>
-          <button className="submit">Submit</button>
-        </>
-      )}
+      {isExpanded && <div className="sectionContent">{children}</div>}
     </form>
   )
 }

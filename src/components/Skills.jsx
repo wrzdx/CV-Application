@@ -3,7 +3,6 @@ import './../styles/Skills.css'
 import userSvg from './../assets/user.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
-import { useState } from 'react'
 
 const SKILL_LEVELS = [
   'Novice - Just started learning',
@@ -17,7 +16,6 @@ function SkillItem({ skill, updateSkill, removeSkill }) {
   return (
     <div key={skill.id} className="skill-item">
       <p>
-        <label htmlFor={skill.id}></label>
         <input
           type="text"
           name="skill"
@@ -60,34 +58,42 @@ function SkillItem({ skill, updateSkill, removeSkill }) {
   )
 }
 
-export default function Skills({ handleToggleSection, isExpanded }) {
-  const [skills, setSkills] = useState([
-    { id: crypto.randomUUID(), name: '', level: 'Novice' },
-  ])
-
+export default function Skills({
+  handleToggleSection,
+  isExpanded,
+  data,
+  handleChangeData,
+}) {
+  const skills = data.skills
+  const setSkills = (newSkills) => handleChangeData('skills', newSkills)
   const MAX_SKILLS = 10
 
   const addSkill = ([name, level]) => {
     const newSkill = { id: crypto.randomUUID(), name, level }
-    setSkills((prevSkills) => [...prevSkills, newSkill])
+    setSkills([...skills, newSkill])
   }
 
   const updateSkill = (id, updatedData) => {
-    setSkills((prevSkills) =>
-      prevSkills.map((skill) =>
+    setSkills(
+      skills.map((skill) =>
         skill.id === id ? { ...skill, ...updatedData } : skill,
       ),
     )
   }
 
   const removeSkill = (id) => {
-    setSkills((prevSkills) => prevSkills.filter((skill) => skill.id !== id))
+    setSkills(skills.filter((skill) => skill.id !== id))
   }
   const content = (
     <div className="skills-container">
-      <ColorPicker miniMode={false} name="skillsColor" />
+      <ColorPicker
+        miniMode={false}
+        name="skillsColor"
+        onChange={(e) => handleChangeData(e.target.name, e.target.value)}
+        color={data.skillsColor}
+      />
       <div className="skills">
-        <p>Skills</p>
+        <label htmlFor={skills[0]?.id}>Skills</label>
         <div className="skill-list">
           {skills.map((skill) => (
             <SkillItem

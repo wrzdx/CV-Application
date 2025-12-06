@@ -44,21 +44,19 @@ function Palette({ setColor, color }) {
           name="palette"
           id="palette"
           onChange={(e) => setColor(e.target.value)}
-          value={color || '#fff'}
+          value={color || '#ffffff'}
         />
       </div>
     </div>
   )
 }
 
-export default function ColorPicker({ miniMode, name, defaultValue = '' }) {
-  const [color, setColor] = useState(defaultValue)
+export default function ColorPicker({ miniMode, name, color = '', onChange }) {
   const [isOpen, setIsOpen] = useState(false)
+  const setColor = (value) => onChange({ target: { name, value } })
 
   return (
     <div className="color-picker-container">
-      <input type="hidden" name={name} value={color || ''} />
-
       {!miniMode && <p onClick={() => setIsOpen(!isOpen)}>Pick a tab color</p>}
 
       <div className="color-picker-trigger" onClick={() => setIsOpen(!isOpen)}>

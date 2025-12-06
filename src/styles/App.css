@@ -3,8 +3,10 @@
   min-height: 120vh;
   display: grid;
   grid-template-columns: 23rem 49rem;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "buttons pdf" "form-list pdf";
   justify-content: center;
-  gap: 2rem;
+  column-gap: 2rem;
 
   --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -14,6 +16,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  grid-area: form-list;
 }
 
 .formSection {
@@ -46,19 +49,8 @@
   margin-top: 1rem;
 }
 
-.formSection .submit {
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.2rem;
-  background-color: var(--orange);
-  color: var(--white);
-  border: none;
-  border-radius: 0.3rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-
 .pdf {
+  grid-area: pdf;
   background-color: var(--white);
   box-shadow: var(--shadow);
 }

@@ -3,10 +3,20 @@ import './../styles/AboutMe.css'
 import userSvg from './../assets/user.svg'
 import FormSection from './FormSection.jsx'
 
-export default function AboutMe({ handleToggleSection, isExpanded }) {
+export default function AboutMe({
+  handleToggleSection,
+  isExpanded,
+  data,
+  handleChangeData,
+}) {
   const content = (
     <div className="about-me">
-      <ColorPicker miniMode={false} name="aboutMeColor" />
+      <ColorPicker
+        miniMode={false}
+        name="aboutMeColor"
+        onChange={(e) => handleChangeData(e.target.name, e.target.value)}
+        color={data.aboutMeColor}
+      />
       <div className="about-me-text-container">
         <label htmlFor="aboutMe">Description</label>
         <textarea
@@ -15,6 +25,8 @@ export default function AboutMe({ handleToggleSection, isExpanded }) {
           name="aboutMe"
           id="aboutMe"
           placeholder="Write a brief description about yourself..."
+          onChange={(e) => handleChangeData(e.target.name, e.target.value)}
+          value={data.aboutMe}
         ></textarea>
       </div>
     </div>

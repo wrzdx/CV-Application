@@ -3,59 +3,67 @@ import './../styles/WorkHistory.css'
 import userSvg from './../assets/user.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
-import { useState } from 'react'
 import DatePicker from './DatePicker.jsx'
 
-function Work({ id, handleDeleteWork }) {
-  const [jobDescs, setJobDescs] = useState([{ id: crypto.randomUUID() }])
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
-
+function Work({ work, handleDeleteWork, setWork }) {
   return (
     <fieldset className="work-item">
       <button
         type="button"
         className="delete-work-item"
-        onClick={() => handleDeleteWork(id)}
+        onClick={() => handleDeleteWork(work.id)}
       >
         <img src={crossSvg} alt="Delete Work Item" />
       </button>
       <div className="content">
         <p>
-          <label htmlFor={'name-' + id}>Company</label>
+          <label htmlFor={'name-' + work.id}>Company</label>
           <input
-            id={'name-' + id}
+            id={'name-' + work.id}
             name="companyName"
             placeholder="Enter the company's name"
             maxLength="32"
+            value={work.companyName}
+            onChange={(e) => setWork({ ...work, companyName: e.target.value })}
             required
           />
         </p>
         <p>
-          <label htmlFor={'address-' + id}>Address</label>
+          <label htmlFor={'address-' + work.id}>Address</label>
           <input
-            id={'address-' + id}
+            id={'address-' + work.id}
             name="companyAddress"
             placeholder="Enter the company's address"
             maxLength="32"
+            value={work.companyAddress}
+            onChange={(e) =>
+              setWork({ ...work, companyAddress: e.target.value })
+            }
             required
           />
         </p>
         <p>
-          <label htmlFor={'role-' + id}>Role</label>
+          <label htmlFor={'role-' + work.id}>Role</label>
           <input
-            id={'role-' + id}
+            id={'role-' + work.id}
             name="roleInCompany"
             placeholder="Enter your Role/Job Title"
             maxLength="32"
+            value={work.roleInCompany}
+            onChange={(e) =>
+              setWork({ ...work, roleInCompany: e.target.value })
+            }
             required
           />
         </p>
         <fieldset className="job-descs">
-          <label key="desc-label" htmlFor={'description-' + jobDescs[0]?.id}>
+          <label
+            key="desc-label"
+            htmlFor={'description-' + work.jobDescs[0]?.id}
+          >
             Description
           </label>
-          {jobDescs.map(({ id }) => {
+          {work.jobDescs.map(({ id, value }) => {
             return (
               <div className="job-desc-container" key={id}>
                 <input
@@ -63,14 +71,28 @@ function Work({ id, handleDeleteWork }) {
                   name="jobDescription"
                   placeholder="Job Responsibility"
                   maxLength="32"
+                  value={value}
+                  onChange={(e) =>
+                    setWork({
+                      ...work,
+                      jobDescs: work.jobDescs.map((job) =>
+                        job.id == id ? { ...job, value: e.target.value } : job,
+                      ),
+                    })
+                  }
                   required
                 />
                 <button
                   type="button"
                   className="delete-job-desc"
-                  onClick={() =>
-                    setJobDescs(jobDescs.filter((jobDesc) => jobDesc.id != id))
-                  }
+                  onClick={() => {
+                    setWork({
+                      ...work,
+                      jobDescs: work.jobDescs.filter(
+                        (jobDesc) => jobDesc.id != id,
+                      ),
+                    })
+                  }}
                 >
                   <img src={crossSvg} alt="delete job description" />
                 </button>
@@ -80,7 +102,10 @@ function Work({ id, handleDeleteWork }) {
           <div
             className="add-job-desc"
             onClick={() => {
-              setJobDescs([...jobDescs, { id: crypto.randomUUID() }])
+              setWork({
+                ...work,
+                jobDescs: [...work.jobDescs, { id: crypto.randomUUID() }],
+              })
             }}
           >
             New Description
@@ -88,18 +113,18 @@ function Work({ id, handleDeleteWork }) {
         </fieldset>
         <div className="dates">
           <DatePicker
-            name={'startDate' + id}
-            setDate={setStartDate}
-            date={startDate}
-            upperBound={endDate}
+            name={'startDate' + work.id}
+            setDate={(value) => setWork({ ...work, startDate: value })}
+            date={work.startDate}
+            upperBound={work.endDate}
           >
             Start Date
           </DatePicker>
           <DatePicker
-            name={'endDate' + id}
-            setDate={setEndDate}
-            date={endDate}
-            lowerBound={startDate}
+            name={'endDate' + work.id}
+            setDate={(value) => setWork({ ...work, endDate: value })}
+            date={work.endDate}
+            lowerBound={work.startDate}
           >
             End Date
           </DatePicker>
@@ -109,21 +134,54 @@ function Work({ id, handleDeleteWork }) {
   )
 }
 
-export default function WorkHistory({ handleToggleSection, isExpanded }) {
-  const [works, setWorks] = useState([{ id: crypto.randomUUID() }])
+export default function WorkHistory({
+  handleToggleSection,
+  isExpanded,
+  data,
+  handleChangeData,
+}) {
+  const works = data.works
+  const setWorks = (newWorks) => handleChangeData('works', newWorks)
   const handleDeleteWork = (id) => {
     setWorks(works.filter((work) => work.id != id))
   }
   const handleAddWork = () => {
-    setWorks([...works, { id: crypto.randomUUID() }])
+    setWorks([
+      ...works,
+      {
+        id: crypto.randomUUID(),
+        jobDescs: [],
+        startDate: new Date(),
+        endDate: new Date(),
+      },
+    ])
+  }
+  const handleUpdateWork = (updatedWork) => {
+    setWorks(
+      works.map((work) => {
+        return work.id === updatedWork.id ? updatedWork : work
+      }),
+    )
   }
   const content = (
     <div className="work-history">
-      <ColorPicker miniMode={false} name="workHistoryColor" />
+      <ColorPicker
+        miniMode={false}
+        name="workHistoryColor"
+        onChange={(e) => handleChangeData(e.target.name, e.target.value)}
+        color={data.workHistoryColor}
+      />
       <div className="work-list">
         <p>Work Histories</p>
         {works.map((work) => (
-          <Work key={work.id} {...{ handleDeleteWork, id: work.id }} />
+          <Work
+            key={work.id}
+            {...{
+              handleDeleteWork,
+              work,
+              setWork: (updatedWork) => handleUpdateWork(updatedWork),
+            }}
+          />
         ))}
         <div
           className="add-work"

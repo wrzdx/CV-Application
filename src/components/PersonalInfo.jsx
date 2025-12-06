@@ -3,19 +3,44 @@ import ColorPicker from './ColorPicker'
 import userSvg from './../assets/user.svg'
 import FormSection from './FormSection.jsx'
 
-function InputGroup({ id, name, inputProps, colorPicker = false }) {
+function InputGroup({
+  id,
+  name,
+  inputProps,
+  value = '',
+  onChange,
+  colorPicker = false,
+  color,
+}) {
+  const isFile = inputProps.type === 'file'
+
   return (
     <div className={'input-group'}>
       <label htmlFor={id}>{name}</label>
       {colorPicker && (
-        <ColorPicker miniMode={true} name={inputProps.name + 'Color'} />
+        <ColorPicker
+          miniMode={true}
+          name={inputProps.name + 'Color'}
+          onChange={onChange}
+          color={color}
+        />
       )}
-      <input id={id} {...inputProps} />
+      <input
+        id={id}
+        {...inputProps}
+        value={isFile ? undefined : value}
+        onChange={onChange}
+      />
     </div>
   )
 }
 
-export default function PersonalInfo({ handleToggleSection, isExpanded }) {
+export default function PersonalInfo({
+  handleToggleSection,
+  isExpanded,
+  data,
+  handleChangeData,
+}) {
   const content = (
     <div className="personal-info">
       <InputGroup
@@ -25,7 +50,17 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
           inputProps: {
             type: 'file',
             name: 'profilePicture',
-            accept: 'image/png, image/jpeg, image/jpg',
+            accept: 'image/*',
+          },
+          value: data.profilePicture,
+          onChange: (e) => {
+            if (e.target.files && e.target.files[0]) {
+              const file = e.target.files[0]
+
+              const previewUrl = URL.createObjectURL(file)
+
+              handleChangeData('profilePicture', previewUrl)
+            }
           },
         }}
       />
@@ -40,6 +75,8 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             required: true,
             maxLength: 32,
           },
+          value: data.fullName,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
       <InputGroup
@@ -55,6 +92,9 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             autoComplete: 'on',
           },
           colorPicker: true,
+          value: data.email,
+          color: data.emailColor,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
       <InputGroup
@@ -70,6 +110,9 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             autoComplete: 'on',
           },
           colorPicker: true,
+          value: data.phone,
+          color: data.phoneColor,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
       <InputGroup
@@ -85,6 +128,9 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             autoComplete: 'on',
           },
           colorPicker: true,
+          value: data.address,
+          color: data.addressColor,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
       <InputGroup
@@ -93,11 +139,14 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
           name: 'LinkedIn Profile',
           inputProps: {
             type: 'url',
-            name: 'linkedin',
+            name: 'linkedIn',
             placeholder: 'Enter your LinkedIn profile URL',
             maxLength: 64,
           },
           colorPicker: true,
+          value: data.linkedIn,
+          color: data.linkedInColor,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
       <InputGroup
@@ -111,6 +160,9 @@ export default function PersonalInfo({ handleToggleSection, isExpanded }) {
             maxLength: 64,
           },
           colorPicker: true,
+          value: data.website,
+          color: data.websiteColor,
+          onChange: (e) => handleChangeData(e.target.name, e.target.value),
         }}
       />
     </div>
