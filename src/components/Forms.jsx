@@ -8,27 +8,35 @@ export default function Forms({ formData, setFormData }) {
     setExpandedSectionId((prevId) => (prevId === sectionId ? null : sectionId))
   }
 
-  function handleChangeData(sectionId, fieldName, fieldValue) {
-    setFormData(
-      formData.map((section, id) =>
-        sectionId == id
-          ? { ...section, data: { ...section.data, [fieldName]: fieldValue } }
-          : section,
-      ),
-    )
+  function handleChangeData(
+    sectionName,
+    fieldName,
+    fieldValue,
+    isValid = true,
+  ) {
+    setFormData({
+      ...formData,
+      [sectionName]: {
+        ...formData[sectionName],
+        data: {
+          ...formData[sectionName].data,
+          [fieldName]: { value: fieldValue, isValid: isValid },
+        },
+      },
+    })
   }
 
   return (
     <div className="form-list">
-      {formData.map(({ Section, data }, id) => (
+      {Object.entries(formData).map(([key, { Section, data }]) => (
         <Section
-          key={id}
+          key={key}
           {...{
-            isExpanded: id === expandedSectionId,
-            handleToggleSection: () => handleToggleSection(id),
+            isExpanded: key === expandedSectionId,
+            handleToggleSection: () => handleToggleSection(key),
             data,
-            handleChangeData: (fieldName, fieldValue) =>
-              handleChangeData(id, fieldName, fieldValue),
+            handleChangeData: (fieldName, fieldValue, isValid) =>
+              handleChangeData(key, fieldName, fieldValue, isValid),
           }}
         />
       ))}

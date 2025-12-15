@@ -1,4 +1,4 @@
-import ColorPicker from './ColorPicker'
+import ColorPicker from './ColorPicker.jsx'
 import './../styles/AboutMe.css'
 import userSvg from './../assets/user.svg'
 import FormSection from './FormSection.jsx'
@@ -15,7 +15,7 @@ export default function AboutMe({
         miniMode={false}
         name="aboutMeColor"
         onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-        color={data.aboutMeColor}
+        color={data.aboutMeColor?.value}
       />
       <div className="about-me-text-container">
         <label htmlFor="aboutMe">Description</label>
@@ -25,8 +25,14 @@ export default function AboutMe({
           name="aboutMe"
           id="aboutMe"
           placeholder="Write a brief description about yourself..."
-          onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-          value={data.aboutMe}
+          onChange={(e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            )
+          }
+          value={data.aboutMe?.value}
         ></textarea>
       </div>
     </div>

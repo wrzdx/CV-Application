@@ -64,11 +64,11 @@ export default function Skills({
   data,
   handleChangeData,
 }) {
-  const skills = data.skills
+  const skills = data.skills.value
   const setSkills = (newSkills) => handleChangeData('skills', newSkills)
   const MAX_SKILLS = 10
 
-  const addSkill = ([name, level]) => {
+  const addSkill = (name, level) => {
     const newSkill = { id: crypto.randomUUID(), name, level }
     setSkills([...skills, newSkill])
   }
@@ -90,7 +90,7 @@ export default function Skills({
         miniMode={false}
         name="skillsColor"
         onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-        color={data.skillsColor}
+        color={data.skillsColor?.value}
       />
       <div className="skills">
         <label htmlFor={skills[0]?.id}>Skills</label>
@@ -106,7 +106,7 @@ export default function Skills({
           <div
             key="new-skill"
             className="add-skill"
-            onClick={() => addSkill(['', ''])}
+            onClick={() => addSkill('', '')}
           >
             New skill
           </div>

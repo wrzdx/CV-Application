@@ -23,7 +23,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="schoolName"
             placeholder="Enter School/University"
             maxLength="32"
-            value={education.schoolName}
+            value={education.schoolName || ''}
             onChange={(e) =>
               setEducation({ ...education, schoolName: e.target.value })
             }
@@ -37,7 +37,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="schoolAddress"
             placeholder="Enter the school's location"
             maxLength="32"
-            value={education.schoolAddress}
+            value={education.schoolAddress || ''}
             onChange={(e) =>
               setEducation({ ...education, schoolAddress: e.target.value })
             }
@@ -51,7 +51,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="degree"
             placeholder="Enter Degree/Field of study"
             maxLength="32"
-            value={education.degree}
+            value={education.degree || ''}
             onChange={(e) =>
               setEducation({ ...education, degree: e.target.value })
             }
@@ -149,7 +149,7 @@ export default function EducationHistory({
   data,
   handleChangeData,
 }) {
-  const educations = data.educations
+  const educations = data.educations.value
   const setEducations = (newEducations) =>
     handleChangeData('educations', newEducations)
 
@@ -182,7 +182,7 @@ export default function EducationHistory({
         miniMode={false}
         name="educationHistoryColor"
         onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-        color={data.educationHistoryColor}
+        color={data.educationHistoryColor?.value}
       />
       <div className="education-list">
         <p>Educations</p>

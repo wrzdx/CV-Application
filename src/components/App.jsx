@@ -12,38 +12,38 @@ import Forms from './Forms.jsx'
 import Pdf from './Pdf.jsx'
 
 function App() {
-  const [formData, setFormData] = useState([
-    {
+  const [formData, setFormData] = useState({
+    personalInfo: {
       Section: PersonalInfo,
       data: {},
     },
-    {
+    aboutMe: {
       Section: AboutMe,
       data: {},
     },
-    {
+    skills: {
       Section: Skills,
       data: {
-        skills: [],
+        skills: { value: [] },
       },
     },
-    {
+    workHistory: {
       Section: WorkHistory,
       data: {
-        works: [],
+        works: { value: [] },
       },
     },
-    {
+    educationHistory: {
       Section: EducationHistory,
       data: {
-        educations: [],
+        educations: { value: [] },
       },
     },
-    {
+    customInformation: {
       Section: CustomInformation,
       data: {},
     },
-  ])
+  })
 
   return (
     <div className="container">

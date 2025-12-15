@@ -23,7 +23,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="companyName"
             placeholder="Enter the company's name"
             maxLength="32"
-            value={work.companyName}
+            value={work.companyName || ''}
             onChange={(e) => setWork({ ...work, companyName: e.target.value })}
             required
           />
@@ -35,7 +35,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="companyAddress"
             placeholder="Enter the company's address"
             maxLength="32"
-            value={work.companyAddress}
+            value={work.companyAddress || ''}
             onChange={(e) =>
               setWork({ ...work, companyAddress: e.target.value })
             }
@@ -49,7 +49,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="roleInCompany"
             placeholder="Enter your Role/Job Title"
             maxLength="32"
-            value={work.roleInCompany}
+            value={work.roleInCompany || ''}
             onChange={(e) =>
               setWork({ ...work, roleInCompany: e.target.value })
             }
@@ -140,7 +140,7 @@ export default function WorkHistory({
   data,
   handleChangeData,
 }) {
-  const works = data.works
+  const works = data.works.value
   const setWorks = (newWorks) => handleChangeData('works', newWorks)
   const handleDeleteWork = (id) => {
     setWorks(works.filter((work) => work.id != id))

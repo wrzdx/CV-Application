@@ -15,7 +15,7 @@ export default function CustomInformation({
         miniMode={false}
         name="customInfoColor"
         onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-        color={data.customInfoColor}
+        color={data.customInfoColor?.value}
       />
       <p>
         <label htmlFor="title">Title</label>
@@ -27,11 +27,11 @@ export default function CustomInformation({
             placeholder: 'Enter title',
             required: true,
             maxLength: 32,
-            value: data.customInfoTitle,
+            value: data.customInfoTitle?.value || '',
             onChange: (e) => handleChangeData(e.target.name, e.target.value),
           }}
         />
-        <p className="hint">Something like "Fun facts"</p>
+        <span className="hint">Something like "Fun facts"</span>
       </p>
       <p>
         <label htmlFor="description">Description</label>
@@ -42,7 +42,7 @@ export default function CustomInformation({
             name: 'customInfoDesc',
             placeholder: 'Enter description',
             required: true,
-            value: data.customInfoDesc,
+            value: data.customInfoDesc?.value || '',
             onChange: (e) => handleChangeData(e.target.name, e.target.value),
             maxLength: 32,
           }}

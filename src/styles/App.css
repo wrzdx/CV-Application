@@ -2,7 +2,7 @@
   padding: 2rem;
   min-height: 120vh;
   display: grid;
-  grid-template-columns: 23rem 49rem;
+  grid-template-columns: 22rem 49rem;
   grid-template-rows: auto 1fr;
   grid-template-areas: "buttons pdf" "form-list pdf";
   justify-content: center;
@@ -53,4 +53,9 @@
   grid-area: pdf;
   background-color: var(--white);
   box-shadow: var(--shadow);
+}
+
+.invalid {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
 }

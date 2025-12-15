@@ -51,15 +51,23 @@ export default function PersonalInfo({
             type: 'file',
             name: 'profilePicture',
             accept: 'image/*',
+            className:
+              data.profilePicture === undefined || data.profilePicture.isValid
+                ? ''
+                : 'invalid',
           },
-          value: data.profilePicture,
+          value: data.profilePicture?.value,
           onChange: (e) => {
             if (e.target.files && e.target.files[0]) {
               const file = e.target.files[0]
 
               const previewUrl = URL.createObjectURL(file)
 
-              handleChangeData('profilePicture', previewUrl)
+              handleChangeData(
+                'profilePicture',
+                previewUrl,
+                e.target.checkValidity(),
+              )
             }
           },
         }}
@@ -74,9 +82,18 @@ export default function PersonalInfo({
             placeholder: 'Enter your full name',
             required: true,
             maxLength: 32,
+            className:
+              data.fullName === undefined || data.fullName.isValid
+                ? ''
+                : 'invalid',
           },
-          value: data.fullName,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.fullName?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
       <InputGroup
@@ -90,11 +107,18 @@ export default function PersonalInfo({
             required: true,
             maxLength: 32,
             autoComplete: 'on',
+            className:
+              data.email === undefined || data.email.isValid ? '' : 'invalid',
           },
           colorPicker: true,
-          value: data.email,
-          color: data.emailColor,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.email?.value,
+          color: data.emailColor?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
       <InputGroup
@@ -103,16 +127,26 @@ export default function PersonalInfo({
           name: 'Phone Number',
           inputProps: {
             type: 'tel',
+
+            pattern: '[+]?[0-9 \\(\\)\\-]{7,}',
+            title: 'Enter correct phone number (min 7 number)',
             name: 'phone',
             placeholder: 'Enter your phone number',
             required: true,
-            maxLength: 15,
+            maxLength: 18,
             autoComplete: 'on',
+            className:
+              data.phone === undefined || data.phone.isValid ? '' : 'invalid',
           },
           colorPicker: true,
-          value: data.phone,
-          color: data.phoneColor,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.phone?.value,
+          color: data.phoneColor?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
       <InputGroup
@@ -126,11 +160,20 @@ export default function PersonalInfo({
             required: true,
             maxLength: 64,
             autoComplete: 'on',
+            className:
+              data.address === undefined || data.address.isValid
+                ? ''
+                : 'invalid',
           },
           colorPicker: true,
-          value: data.address,
-          color: data.addressColor,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.address?.value,
+          color: data.addressColor?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
       <InputGroup
@@ -140,13 +183,24 @@ export default function PersonalInfo({
           inputProps: {
             type: 'url',
             name: 'linkedIn',
-            placeholder: 'Enter your LinkedIn profile URL',
+            pattern: 'https://(www\\.)?linkedin\\.com/.*',
+            placeholder: 'https://linkedin.com/in/username',
+            title: 'Ссылка должна начинаться с https://linkedin.com/',
             maxLength: 64,
+            className:
+              data.linkedIn === undefined || data.linkedIn.isValid
+                ? ''
+                : 'invalid',
           },
           colorPicker: true,
-          value: data.linkedIn,
-          color: data.linkedInColor,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.linkedIn?.value,
+          color: data.linkedInColor?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
       <InputGroup
@@ -156,13 +210,24 @@ export default function PersonalInfo({
           inputProps: {
             type: 'url',
             name: 'website',
-            placeholder: 'Enter your website URL',
             maxLength: 64,
+            className:
+              data.website === undefined || data.website.isValid
+                ? ''
+                : 'invalid',
+            pattern: 'https?://.+\\..+',
+            placeholder: 'https://mywebsite.com',
+            title: 'Введите корректный URL (начиная с http:// или https://)',
           },
           colorPicker: true,
-          value: data.website,
-          color: data.websiteColor,
-          onChange: (e) => handleChangeData(e.target.name, e.target.value),
+          value: data.website?.value,
+          color: data.websiteColor?.value,
+          onChange: (e) =>
+            handleChangeData(
+              e.target.name,
+              e.target.value,
+              e.target.checkValidity(),
+            ),
         }}
       />
     </div>
