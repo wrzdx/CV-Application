@@ -13,6 +13,7 @@ function Palette({ setColor, color }) {
     '#F43F5E',
     '#09203F',
   ]
+  const [textColor, setTextColor] = useState('#')
 
   return (
     <div className="palette-popover">
@@ -22,7 +23,10 @@ function Palette({ setColor, color }) {
             key={c}
             className="color-swatch-btn"
             style={{ backgroundColor: c }}
-            onClick={() => setColor(c)}
+            onClick={() => {
+              setColor(c)
+              setTextColor(c)
+            }}
             type="button"
           />
         ))}
@@ -32,8 +36,19 @@ function Palette({ setColor, color }) {
         type="text"
         className="hex-input"
         placeholder="#000000"
-        onChange={(e) => setColor(e.target.value)}
-        value={color || '#'}
+        onChange={(e) => {
+          setTextColor(e.target.value || '#')
+          const isEmpty = e.target.value === '#'
+          const isValid =
+            e.target.value.length === 7 && e.target.value[0] === '#'
+          if (isValid) {
+            setColor(e.target.value)
+          }
+          if (isEmpty) {
+            setColor('')
+          }
+        }}
+        value={textColor}
         autoFocus
         maxLength="7"
         id="hex-input"
@@ -43,7 +58,10 @@ function Palette({ setColor, color }) {
           type="color"
           name="palette"
           id="palette"
-          onChange={(e) => setColor(e.target.value)}
+          onChange={(e) => {
+            setColor(e.target.value)
+            setTextColor(e.target.value)
+          }}
           value={color || '#ffffff'}
         />
       </div>
@@ -53,7 +71,9 @@ function Palette({ setColor, color }) {
 
 export default function ColorPicker({ miniMode, name, color = '', onChange }) {
   const [isOpen, setIsOpen] = useState(false)
-  const setColor = (value) => onChange({ target: { name, value } })
+  const setColor = (value) => {
+    onChange({ target: { name, value, checkValidity: () => true } })
+  }
 
   return (
     <div className="color-picker-container">
