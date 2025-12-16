@@ -26,6 +26,7 @@
       display: grid;
       grid-template-columns: repeat(3, auto);
       gap: 0.5rem 1rem;
+      grid-auto-flow: dense
     }
 
     & .contact-info a {

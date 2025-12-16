@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import './../styles/pdf.css'
 import AboutMeSection from './PdfAboutMe'
 import CustomInfoSection from './PdfCustomInfo'
@@ -6,9 +7,9 @@ import PersonalDataSection from './PdfPersonalData'
 import SkillsSection from './PdfSkills'
 import WorkHistorySection from './PdfWorkHistory'
 
-export default function Pdf({ data }) {
+const Pdf = forwardRef(({ data }, ref) => {
   return (
-    <div className="pdf">
+    <div className="pdf" ref={ref}>
       <PersonalDataSection data={data.personalInfo.data} />
       <AboutMeSection data={data.aboutMe.data} />
       <SkillsSection data={data.skills.data} />
@@ -17,4 +18,6 @@ export default function Pdf({ data }) {
       <CustomInfoSection data={data.customInformation.data} />
     </div>
   )
-}
+})
+
+export default Pdf

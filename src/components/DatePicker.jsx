@@ -60,7 +60,7 @@ function Calendar({ setDate, date, lowerBound, upperBound }) {
         <div className="month-year">
           {format(dateToShow, 'LLLL ')}
           <span
-            onDoubleClick={() => {
+            onClick={() => {
               if (!isYearEditMode) {
                 setIsYearEditMode(true)
               }

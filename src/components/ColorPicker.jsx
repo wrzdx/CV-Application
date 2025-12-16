@@ -4,14 +4,14 @@ import brushSvg from './../assets/brush.svg'
 
 function Palette({ setColor, color }) {
   const basicPalette = [
-    '#EA580C',
-    '#EAB308',
-    '#22C55E',
-    '#3B82F6',
-    '#8B5CF6',
-    '#EC4899',
-    '#F43F5E',
-    '#09203F',
+    '#66c2a5',
+    '#fc8d62',
+    '#8da0cb',
+    '#e78ac3',
+    '#a6d854',
+    '#ffd92f',
+    '#e5c494',
+    '#b3b3b3',
   ]
   const [textColor, setTextColor] = useState('#')
 

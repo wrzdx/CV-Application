@@ -59,3 +59,23 @@
   outline: 3px solid var(--red);
   outline-offset: 3px;
 }
+
+@media print {
+  body {
+    margin: 0;
+  }
+
+  .container {
+    display: block;
+  }
+
+  .pdf {
+    width: 210mm;
+    min-height: 297mm;
+  }
+
+  .buttons,
+  .forms {
+    display: none !important;
+  }
+}
