@@ -30,7 +30,7 @@
 .formSectionHeader {
   display: flex;
   gap: 0.5rem;
-  height: 1.2rem; 
+  height: 1.2rem;
   font-size: 1.2rem;
   line-height: 1;
   font-weight: 600;
@@ -77,5 +77,18 @@
   .buttons,
   .forms {
     display: none !important;
+  }
+}
+
+@media screen and (width <= 1200px) {
+  .container {
+    min-width: none;
+    max-width: 60rem;
+    display: grid;
+    margin: auto;
+    grid-template-columns: auto;
+    grid-template-areas: "buttons" "form-list" "pdf";
+    padding: 0;
+    gap: 1.5rem;
   }
 }

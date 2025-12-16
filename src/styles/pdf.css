@@ -38,6 +38,7 @@
     }
 
     & .contact-info a div {
+      flex: none;
       height: 1.5em;
       border-radius: 50%;
       padding: 0.25rem;
