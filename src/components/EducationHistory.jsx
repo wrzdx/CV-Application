@@ -23,7 +23,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="schoolName"
             placeholder="Enter School/University"
             maxLength="32"
-            value={education.schoolName || ''}
+            value={education.schoolName}
             onChange={(e) =>
               setEducation({ ...education, schoolName: e.target.value })
             }
@@ -37,7 +37,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="schoolAddress"
             placeholder="Enter the school's location"
             maxLength="32"
-            value={education.schoolAddress || ''}
+            value={education.schoolAddress}
             onChange={(e) =>
               setEducation({ ...education, schoolAddress: e.target.value })
             }
@@ -51,7 +51,7 @@ function Education({ education, setEducation, handleDeleteEducation }) {
             name="degree"
             placeholder="Enter Degree/Field of study"
             maxLength="32"
-            value={education.degree || ''}
+            value={education.degree}
             onChange={(e) =>
               setEducation({ ...education, degree: e.target.value })
             }
@@ -92,7 +92,6 @@ function Education({ education, setEducation, handleDeleteEducation }) {
                   id={'achievement-' + id}
                   name="achievement"
                   placeholder="Achievement"
-                  maxLength="32"
                   value={value}
                   onChange={(e) =>
                     setEducation({
@@ -161,6 +160,9 @@ export default function EducationHistory({
       ...educations,
       {
         id: crypto.randomUUID(),
+        schoolName: '',
+        schoolAddress: '',
+        degree: '',
         achievements: [],
         startDate: new Date(),
         endDate: new Date(),

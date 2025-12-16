@@ -44,7 +44,6 @@ export default function CustomInformation({
             required: true,
             value: data.customInfoDesc?.value || '',
             onChange: (e) => handleChangeData(e.target.name, e.target.value),
-            maxLength: 32,
           }}
         />
       </p>

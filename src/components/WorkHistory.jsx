@@ -23,7 +23,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="companyName"
             placeholder="Enter the company's name"
             maxLength="32"
-            value={work.companyName || ''}
+            value={work.companyName}
             onChange={(e) => setWork({ ...work, companyName: e.target.value })}
             required
           />
@@ -35,7 +35,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="companyAddress"
             placeholder="Enter the company's address"
             maxLength="32"
-            value={work.companyAddress || ''}
+            value={work.companyAddress}
             onChange={(e) =>
               setWork({ ...work, companyAddress: e.target.value })
             }
@@ -49,7 +49,7 @@ function Work({ work, handleDeleteWork, setWork }) {
             name="roleInCompany"
             placeholder="Enter your Role/Job Title"
             maxLength="32"
-            value={work.roleInCompany || ''}
+            value={work.roleInCompany}
             onChange={(e) =>
               setWork({ ...work, roleInCompany: e.target.value })
             }
@@ -63,14 +63,13 @@ function Work({ work, handleDeleteWork, setWork }) {
           >
             Description
           </label>
-          {work.jobDescs.map(({ id, value }) => {
+          {work.jobDescs.map(({ id, value = '' }) => {
             return (
               <div className="job-desc-container" key={id}>
                 <input
                   id={'description-' + id}
                   name="jobDescription"
                   placeholder="Job Responsibility"
-                  maxLength="32"
                   value={value}
                   onChange={(e) =>
                     setWork({
@@ -150,6 +149,9 @@ export default function WorkHistory({
       ...works,
       {
         id: crypto.randomUUID(),
+        companyName: '',
+        companyAddress: '',
+        roleInCompany: '',
         jobDescs: [],
         startDate: new Date(),
         endDate: new Date(),
@@ -169,7 +171,7 @@ export default function WorkHistory({
         miniMode={false}
         name="workHistoryColor"
         onChange={(e) => handleChangeData(e.target.name, e.target.value)}
-        color={data.workHistoryColor}
+        color={data.workHistoryColor?.value}
       />
       <div className="work-list">
         <p>Work Histories</p>

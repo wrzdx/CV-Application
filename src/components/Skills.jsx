@@ -4,14 +4,6 @@ import userSvg from './../assets/user.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
 
-const SKILL_LEVELS = [
-  'Novice - Just started learning',
-  'Beginner - Basic understanding',
-  'Intermediate - Good working knowledge',
-  'Advanced - Strong expertise',
-  'Expert - Deep specialized knowledge',
-]
-
 function SkillItem({ skill, updateSkill, removeSkill }) {
   return (
     <div key={skill.id} className="skill-item">
@@ -28,25 +20,6 @@ function SkillItem({ skill, updateSkill, removeSkill }) {
           placeholder="Python..."
         />
       </p>
-      <select
-        value={skill.level || 'Novice'}
-        name={skill.name}
-        id={'skill-level' + skill.id}
-        onChange={(e) =>
-          updateSkill(skill.id, {
-            level: e.target.value,
-          })
-        }
-      >
-        {SKILL_LEVELS.map((levelDesc) => {
-          const level = levelDesc.split(' - ')[0]
-          return (
-            <option key={level} value={level}>
-              {levelDesc}
-            </option>
-          )
-        })}
-      </select>
       <button
         type="button"
         className="delete-skill"
@@ -66,10 +39,9 @@ export default function Skills({
 }) {
   const skills = data.skills.value
   const setSkills = (newSkills) => handleChangeData('skills', newSkills)
-  const MAX_SKILLS = 10
 
-  const addSkill = (name, level) => {
-    const newSkill = { id: crypto.randomUUID(), name, level }
+  const addSkill = (name) => {
+    const newSkill = { id: crypto.randomUUID(), name }
     setSkills([...skills, newSkill])
   }
 
@@ -106,7 +78,7 @@ export default function Skills({
           <div
             key="new-skill"
             className="add-skill"
-            onClick={() => addSkill('', '')}
+            onClick={() => addSkill('')}
           >
             New skill
           </div>

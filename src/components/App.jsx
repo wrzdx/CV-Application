@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="container">
-      <Buttons {...{ formData, setFormData }} />
+      <Buttons {...{ setFormData }} />
       <Forms {...{ formData, setFormData }} />
       <Pdf data={formData} />
     </div>

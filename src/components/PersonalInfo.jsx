@@ -44,6 +44,7 @@ export default function PersonalInfo({
   const content = (
     <div className="personal-info">
       <InputGroup
+        key={data.profilePicture?.value === 'reset' ? '' : undefined}
         {...{
           id: 'profilePicture',
           name: 'Profile Picture',
@@ -51,10 +52,6 @@ export default function PersonalInfo({
             type: 'file',
             name: 'profilePicture',
             accept: 'image/*',
-            className:
-              data.profilePicture === undefined || data.profilePicture.isValid
-                ? ''
-                : 'invalid',
           },
           value: data.profilePicture?.value,
           onChange: (e) => {
@@ -181,11 +178,10 @@ export default function PersonalInfo({
           id: 'linkedin',
           name: 'LinkedIn Profile',
           inputProps: {
-            type: 'url',
             name: 'linkedIn',
-            pattern: 'https://(www\\.)?linkedin\\.com/.*',
-            placeholder: 'https://linkedin.com/in/username',
-            title: 'Ссылка должна начинаться с https://linkedin.com/',
+            placeholder: 'Username',
+            title:
+              'Enter username of your linkedin profile: https://linkedin.com/in/Username',
             maxLength: 64,
             className:
               data.linkedIn === undefined || data.linkedIn.isValid
@@ -217,7 +213,7 @@ export default function PersonalInfo({
                 : 'invalid',
             pattern: 'https?://.+\\..+',
             placeholder: 'https://mywebsite.com',
-            title: 'Введите корректный URL (начиная с http:// или https://)',
+            title: 'Enter valid URL (starts with http:// or https://)',
           },
           colorPicker: true,
           value: data.website?.value,
