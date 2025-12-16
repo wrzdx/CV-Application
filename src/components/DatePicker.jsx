@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { set } from 'date-fns'
 
 import './../styles/DatePicker.css'
 import calendarSvg from './../assets/calendar.svg'
@@ -18,6 +19,8 @@ import {
 function Calendar({ setDate, date, lowerBound, upperBound }) {
   const today = new Date()
   const [dateToShow, setDateToShow] = useState(date)
+  const [isYearEditMode, setIsYearEditMode] = useState(false)
+  const [year, setYear] = useState(format(dateToShow, 'yyyy'))
 
   const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 
@@ -54,7 +57,47 @@ function Calendar({ setDate, date, lowerBound, upperBound }) {
             alt="previous month"
           />
         </button>
-        <p className="month-year">{format(dateToShow, 'LLLL yyyy')}</p>
+        <div className="month-year">
+          {format(dateToShow, 'LLLL ')}
+          <span
+            onDoubleClick={() => {
+              if (!isYearEditMode) {
+                setIsYearEditMode(true)
+              }
+            }}
+          >
+            {isYearEditMode ? (
+              <>
+                <div
+                  className="backdrop2"
+                  onClick={() => {
+                    if (year.length === 4 && !isNaN(year)) {
+                      setDateToShow(set(dateToShow, { year: parseInt(year) }))
+                    }
+                    setIsYearEditMode(false)
+                  }}
+                ></div>
+                <input
+                  type="number"
+                  id="year"
+                  value={year}
+                  autoFocus={true}
+                  onChange={(e) => setYear(e.target.value)}
+                  onKeyUp={(e) => {
+                    if (e.key === 'Enter') {
+                      if (year.length === 4 && !isNaN(year)) {
+                        setDateToShow(set(dateToShow, { year: parseInt(year) }))
+                      }
+                      setIsYearEditMode(false)
+                    }
+                  }}
+                ></input>
+              </>
+            ) : (
+              format(dateToShow, 'yyyy')
+            )}
+          </span>
+        </div>
         <button
           type="button"
           className="next-month-year"

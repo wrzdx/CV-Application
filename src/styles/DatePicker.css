@@ -30,7 +30,8 @@
   height: 1em;
 }
 
-.backdrop {
+.backdrop,
+.backdrop2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,6 +40,10 @@
   z-index: 100;
   background: transparent;
   cursor: default;
+}
+
+.backdrop2 {
+  z-index: 102;
 }
 
 .calendar-popover {
@@ -63,6 +68,27 @@
 .month-year {
   margin-inline: auto;
   font-weight: 500;
+}
+
+.month-year input::-webkit-outer-spin-button,
+.month-year input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.month-year input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.month-year-container .month-year input {
+  padding: 0;
+  position: relative;
+  z-index: 103;
+  width: 4ch;
+  border: none;
+}
+
+.month-year-container .month-year input:focus {
+  outline: none;
 }
 
 .month-year-container > button {
@@ -121,5 +147,3 @@
 .unavailable {
   cursor: default;
 }
-
-
