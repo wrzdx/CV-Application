@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import './../styles/App.css'
+import githubSvg from './../assets/github-mark.svg'
 
 import Buttons from './Buttons.jsx'
 import PersonalInfo from './PersonalInfo.jsx'
@@ -54,6 +55,13 @@ function App() {
 
   return (
     <div className="container">
+      <p className="signature">
+        <span>Created by</span>
+        <a href="https://github.com/wrzdx">
+          wrzdx <img src={githubSvg} alt="GitHub Icon" />
+        </a>
+      </p>
+
       <Buttons {...{ setFormData, handlePrint }} />
       <Forms {...{ formData, setFormData }} />
       <Pdf data={formData} ref={cvRef} />
