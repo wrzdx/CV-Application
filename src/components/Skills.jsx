@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker'
 import './../styles/Skills.css'
-import userSvg from './../assets/user.svg'
+import rocketSvg from './../assets/rocket-lunch.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
 
@@ -89,7 +89,7 @@ export default function Skills({
   return (
     <FormSection
       name="Skills"
-      svgUrl={userSvg}
+      svgUrl={rocketSvg}
       isExpanded={isExpanded}
       onToggle={handleToggleSection}
     >

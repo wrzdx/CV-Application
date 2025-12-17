@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker'
 import './../styles/WorkHistory.css'
-import userSvg from './../assets/user.svg'
+import suitcaseAlt from './../assets/suitcase-alt.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
 import DatePicker from './DatePicker.jsx'
@@ -199,7 +199,7 @@ export default function WorkHistory({
   return (
     <FormSection
       name="Work History"
-      svgUrl={userSvg}
+      svgUrl={suitcaseAlt}
       isExpanded={isExpanded}
       onToggle={handleToggleSection}
     >

@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker'
 import './../styles/EducationHistory.css'
-import userSvg from './../assets/user.svg'
+import educationSvg from './../assets/graduation-cap.svg'
 import crossSvg from './../assets/cross.svg'
 import FormSection from './FormSection.jsx'
 import DatePicker from './DatePicker.jsx'
@@ -213,7 +213,7 @@ export default function EducationHistory({
   return (
     <FormSection
       name="Education History"
-      svgUrl={userSvg}
+      svgUrl={educationSvg}
       isExpanded={isExpanded}
       onToggle={handleToggleSection}
     >

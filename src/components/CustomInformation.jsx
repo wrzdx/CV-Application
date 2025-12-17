@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker'
 import './../styles/CustomInformation.css'
-import userSvg from './../assets/user.svg'
+import infoSvg from './../assets/info.svg'
 import FormSection from './FormSection.jsx'
 
 export default function CustomInformation({
@@ -52,7 +52,7 @@ export default function CustomInformation({
   return (
     <FormSection
       name="Custom Information"
-      svgUrl={userSvg}
+      svgUrl={infoSvg}
       isExpanded={isExpanded}
       onToggle={handleToggleSection}
     >

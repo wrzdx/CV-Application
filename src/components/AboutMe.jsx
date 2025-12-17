@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker.jsx'
 import './../styles/AboutMe.css'
-import userSvg from './../assets/user.svg'
+import persInfoSvg from './../assets/pers-info.svg'
 import FormSection from './FormSection.jsx'
 
 export default function AboutMe({
@@ -40,7 +40,7 @@ export default function AboutMe({
   return (
     <FormSection
       name="About Me"
-      svgUrl={userSvg}
+      svgUrl={persInfoSvg}
       isExpanded={isExpanded}
       onToggle={handleToggleSection}
     >
